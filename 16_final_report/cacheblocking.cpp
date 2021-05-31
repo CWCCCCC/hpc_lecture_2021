@@ -84,3 +84,6 @@ int main() {
       err += fabs(C[i][j]);
   printf("error: %lf\n",err/N/N);
 }         
+
+# g++ cacheblocking.cpp -fopenmp
+# ./a.out
