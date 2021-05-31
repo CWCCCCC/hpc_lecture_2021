@@ -32,7 +32,7 @@ __global__ void cuda(float* A, float* B, float* C, int N)
         __syncthreads();
     }
 
-    C[Row * N + Col] = sum;
+    C[Col + N * Row ] = sum;
 }
 
 int main(int argc, char** argv) {
@@ -66,7 +66,7 @@ int main(int argc, char** argv) {
     auto toc = chrono::steady_clock::now();
     double comp_time = chrono::duration<double>(toc - tic).count();
 
-    cudaMemcpy(&C[0], c, sizeof(float) * N * N, cudaMemcpyDeviceToHost);
+    cudaMemcpy(&C[0], z, sizeof(float) * N * N, cudaMemcpyDeviceToHost);
 
     for (int i=0; i<N; i++)
         for (int j=0; j<N; j++)
