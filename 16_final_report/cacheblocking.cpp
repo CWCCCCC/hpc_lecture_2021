@@ -9,12 +9,12 @@ typedef vector<vector<float>> matrix;
 
 void matmult(matrix &A, matrix &B, matrix &C, int N) {
   const int m = N, n = N, k = N;
-  const int kc = 16;
-  const int nc = 8;
-  const int mc = 16;
-  const int nr = 8;
-  const int mr = 4;
-#pragma omp parallel for collapse(2)
+  const int kc = 64;
+  const int nc = 64;
+  const int mc = 64;
+  const int nr = 64;
+  const int mr = 32;
+#pragma omp parallel for shared(B)
   for (int jc=0; jc<n; jc+=nc) {
     for (int pc=0; pc<k; pc+=kc) {
       float Bc[kc*nc];
@@ -55,7 +55,7 @@ void matmult(matrix &A, matrix &B, matrix &C, int N) {
 }
 
 int main() {
-  const int N = 256;
+  const int N = 1024;
   matrix A(N,vector<float>(N));
   matrix B(N,vector<float>(N));
   matrix C(N,vector<float>(N));
