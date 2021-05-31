@@ -85,5 +85,5 @@ int main() {
   printf("error: %lf\n",err/N/N);
 }         
 
-# g++ cacheblocking.cpp -fopenmp
-# ./a.out
+// g++ cacheblocking.cpp -fopenmp
+// ./a.out
