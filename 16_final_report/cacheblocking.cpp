@@ -1,8 +1,8 @@
 #include <cstdlib>
 #include <cstdio>
-#include <cmath>
 #include <vector>
 #include <chrono>
+#include <cmath>
 #include <immintrin.h>
 using namespace std;
 typedef vector<vector<float>> matrix;
@@ -13,8 +13,9 @@ void matmult(matrix &A, matrix &B, matrix &C, int N) {
   const int nc = 64;
   const int mc = 64;
   const int nr = 64;
-  const int mr = 32;
-#pragma omp parallel for shared(B)
+  const int mr = 64;
+	
+#pragma omp parallel for 
   for (int jc=0; jc<n; jc+=nc) {
     for (int pc=0; pc<k; pc+=kc) {
       float Bc[kc*nc];
