@@ -69,3 +69,6 @@ int main(int argc, char** argv) {
   }
   MPI_Finalize();
 }
+
+//mpicxx openmp_mpi_simd.cpp -fopenmp -fopt-info-optimized -march=native -O3
+//mpirun -np 8 ./a.out
