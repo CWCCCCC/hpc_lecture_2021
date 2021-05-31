@@ -11,7 +11,7 @@ int main(int argc, char** argv) {
   MPI_Comm_size(MPI_COMM_WORLD, &size);
   MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
-  const int N = 256;
+  const int N = 1024;
   vector<float> A(N*N);
   vector<float> B(N*N);
   vector<float> C(N*N, 0);
